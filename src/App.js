@@ -1,24 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import TodoList from "./Component/TodoList";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { v4 as uuidv4 } from "uuid";
+import { TodoContext } from "./Contexts/TodoContext";
+import { useState } from "react";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Alex"],
+  },
+});
+
+let initialTodos = [
+  {
+    id: uuidv4(),
+    title: "عنوان المهمة الاولى",
+    details: "تفاصيل المهمة الاولى",
+    isCompleted: false,
+  },
+  {
+    id: uuidv4(),
+    title: "عنوان المهمة الثانية",
+    details: "تفاصيل المهمة الثانية",
+    isCompleted: false,
+  },
+  {
+    id: uuidv4(),
+    title: "عنوان المهمة الثالثة",
+    details: "تفاصيل المهمة الثالثة",
+    isCompleted: false,
+  },
+];
 
 function App() {
+  const [todos, setTodos] = useState(initialTodos);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div
+        className="App"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          backgroundColor: "black",
+          direction: "rtl",
+          textAlign: "center",
+        }}
+      >
+        <TodoContext.Provider value={{ todos, setTodos }}>
+          <TodoList />
+        </TodoContext.Provider>
+      </div>
+    </ThemeProvider>
   );
 }
 
