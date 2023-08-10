@@ -22,4 +22,4 @@ If you wont to use this project dont forget to run the next command to install a
 
 
 ## Live Demo :- 
-### https://64c27600da661a03c099b46f--effortless-paprenjak-9ccd37.netlify.app/
+### https://gorgeous-sunshine-e0163e.netlify.app/
